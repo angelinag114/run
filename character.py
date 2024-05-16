@@ -29,12 +29,15 @@ class Character:
          self.y = self.y + self.delta
      self.rect = pygame.Rect(self.x, self.y, self.image_size[0], self.image_size[1])
 
-  def switch_image(self):
+  def switch_image(self, direction):
     image_number = 0
-    if not self. and :
+    if not self.front and direction == "up":
       image_number = 1
+      if not self.front and direction == "right":
+        image_number = 2
+        if not self.front and direction == " left":
+          image_number = 3
     self.image = pygame.image.load(self.image_list[image_number])
     self.rescale_image(self.image)
     self.image_size = self.image.get_size()
-    self.up = not self.up
-
+    self.front = not self.front
