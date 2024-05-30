@@ -1,5 +1,6 @@
 import pygame
 from character import Character
+from stranger import Stranger
 
 pygame.init()
 pygame.font.init()
@@ -10,21 +11,21 @@ size = (800, 600)
 screen = pygame.display.set_mode(size)
 background = pygame.image.load("map.png")
 
-c=  Character(20,240)
+c = Character(20,240)
+s = Stranger(200, 200)
 
 welcome = my_font.render("What happened in this abandoned city?", True,
                          (255, 255, 255))
 start = my_font.render("Press space to start.", True, (255, 255, 255))
 
-
 run = True
-game_start = True
+game_start = False
 
-  
-  
 while run:
   
   keys = pygame.key.get_pressed()
+  if keys[pygame.K_SPACE]:
+    game_start = True
   if keys[pygame.K_d]:
     c.move_direction("right")
   if keys[pygame.K_a]:
@@ -38,14 +39,18 @@ while run:
     if event.type == pygame.QUIT:
         run = False
       
-  screen.fill((0,0,0))
 
-  if run:
+  if game_start:
+    screen.blit(background, (0, 0))
+    screen.blit(c.image, c.rect)
+    screen.blit(s.image, s. rect)
+    
+  if game_start == False:
     screen.blit(background, (0, 0))
     screen.blit(welcome, (200, 230))
     screen.blit(start, (300, 250))
-    screen.blit(c.image, c.rect)
 
+   
 
   pygame.display.update()
 
