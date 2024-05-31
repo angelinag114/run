@@ -12,9 +12,9 @@ screen = pygame.display.set_mode(size)
 background = pygame.image.load("map.png")
 
 c = Character(20,240)
-s = Stranger(200, 200)
+s = Stranger(725,20)
 
-welcome = my_font.render("What happened in this abandoned city?", True,
+welcome = my_font.render("Explore the abandoned city!", True,
                          (255, 255, 255))
 start = my_font.render("Press space to start.", True, (255, 255, 255))
 
@@ -47,8 +47,14 @@ while run:
     
   if game_start == False:
     screen.blit(background, (0, 0))
-    screen.blit(welcome, (200, 230))
+    screen.blit(welcome, (265, 230))
     screen.blit(start, (300, 250))
+
+   
+
+  pygame.display.update()
+
+pygame.quit()
 
    
 
