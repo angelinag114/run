@@ -16,4 +16,4 @@ class Stranger:
   def rescale_image(self, image):
     self.image_size = self.image.get_size()
     scale_size = (self.image_size[0] * .3, self.image_size[1] * .3)
-    self.image = pygame.transform.scale(self.i
+    self.image = pygame.transform.scale(self.image, scale_size)
