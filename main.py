@@ -13,13 +13,15 @@ background = pygame.image.load("map.png")
 
 c = Character(20,240)
 s = Stranger(725,20)
+hearts= 3
 
-welcome = my_font.render("Explore the abandoned city!", True,
-                         (255, 255, 255))
+welcome = my_font.render("Explore the abandoned city!", True, (255, 255, 255))
 start = my_font.render("Press space to start.", True, (255, 255, 255))
+health_remaining = my_font.render("Hearts remaining: "+ str(hearts), True, (255, 255, 255))
 
 run = True
 game_start = False
+click = 1
 
 while run:
   
@@ -38,12 +40,18 @@ while run:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
         run = False
-      
+
+  if event.type == pygame.MOUSEBUTTONDOWN:
+    if s.rect.collidepoint(event.pos):
+      hearts = hearts - click
+      health_remaining = my_font.render("Hearts remaining: " + str(hearts), True, (255, 255, 255))
 
   if game_start:
     screen.blit(background, (0, 0))
     screen.blit(c.image, c.rect)
     screen.blit(s.image, s. rect)
+    screen.blit(health_remaining, (00,00))
+
     
   if game_start == False:
     screen.blit(background, (0, 0))
@@ -58,6 +66,5 @@ pygame.quit()
 
    
 
-  pygame.display.update()
 
-pygame.quit()
+
